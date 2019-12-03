@@ -1,11 +1,8 @@
 <template>
   <div>
-    <div v-for="thread in threads" class="col-large push-top" >
-      
-      <router-link :to="{ name: 'ThreadShow', params: {id: thread['.key']} }">
-        <h1>{{thread.title}}</h1> 
-      </router-link>
-        
+    <div class="col-large push-top"> 
+      <h1>{{ thread.title }}</h1>
+
       <div class="post-list">
         <div v-for="postId in thread.posts" class="post">
           <div class="user-info">
@@ -13,7 +10,7 @@
 
             <a href="#">
               <img class="avatar-large" :src="users[posts[postId].userId].avatar" alt="">
-            </a>
+            </a>   
 
             <p class="desktop-only text-small">107 posts</p>
           </div>
@@ -29,21 +26,28 @@
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </template>
 
-<script>
-import sourceData from '@/data' // @ means src folder
 
-// console.log(sourceData)
+<script>
+import sourceData from '@/data'
 
 export default {
-  name: 'HelloWorld',
+  name: 'ThreadShow',
+  // props: ['id'],
+  props: {
+    id: {
+      required: true,
+      type: String,
+      default: 'iD'
+    }
+  },
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      threads: sourceData.threads,
+      thread: sourceData.threads[this.id],
       posts: sourceData.posts,
       users: sourceData.users
     }
