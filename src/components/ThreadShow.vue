@@ -45,7 +45,7 @@ export default {
       default: 'iD'
     }
   },
-  data() {
+  data () {
     return {
       thread: sourceData.threads[this.id],
       posts: sourceData.posts,

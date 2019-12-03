@@ -2,8 +2,6 @@
   <div class="container">
 
     <div id="app">
-      
-      <img src="./assets/logo.png">
 
       <router-view/>
 
