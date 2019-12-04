@@ -3,16 +3,12 @@
     <div class="col-large push-top"> 
       <h1>{{ thread.title }}</h1>
 
-       <PostList :posts="posts"/>
+      <PostList :posts="posts"/>
 
-       <form @submit.prevent="addPost">
-         <div class="form-group">
-           <textarea v-model="newPostText" cols="30" rows="10" class="form-input"></textarea>
-         </div>
-         <div class="form-actions">
-           <button class="btn-blue">Submit post</button>
-         </div>
-       </form>
+      <PostEditor 
+        :threadId="id"
+        @save-post="addPost"
+      />
     </div>
   </div>
 </template>
@@ -21,19 +17,20 @@
 <script>
 import sourceData from '@/data'
 import PostList from '@/components/PostList'
+import PostEditor from '@/components/PostEditor'
 
 export default {
   name: 'PageThreadShow',
 
   components: {
-    PostList
+    PostList,
+    PostEditor
   },
 
   props: {
     id: {
       required: true,
-      type: String,
-      default: 'iD'
+      type: String
     }
   },
 
@@ -53,24 +50,16 @@ export default {
   },
 
   methods: {
-    addPost () {
-      const postId = 'greatPost' + Math.random()
-      const post = {
-        text: this.newPostText,
-        publishedAt: Math.floor(Date.now() / 1000),
-        threadId: this.id,
-        userId: 'FsCDAk9w8NeXEceLV87arpsXjnQ2',
-        '.key': postId
-      }
+    addPost (eventData) {
+      // console.log(eventData)
 
-      // use the method below to set value to make it react to the changes
-      // this.$set(object, propertyName, value)
+      const post = eventData.post
+      const postId = eventData.post['.key']
+      // use "this.$set(object, propertyName, value)" to set value to make it react to the changes
       this.$set(sourceData.posts, postId, post)
       this.$set(this.thread.posts, postId, postId)
       // increase user post count
       this.$set(sourceData.users[post.userId].posts, postId, postId)
-
-      this.newPostText = ''
     }
   }
 }
