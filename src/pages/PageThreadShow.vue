@@ -36,7 +36,7 @@
 import sourceData from '@/data'
 
 export default {
-  name: 'ThreadShow',
+  name: 'PageThreadShow',
   // props: ['id'],
   props: {
     id: {
