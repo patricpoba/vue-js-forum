@@ -15,12 +15,8 @@
         {{ post.text }}
       </div>
     </div>
-
-    <div 
-      class="post-date text-faded"
-      :title="post.publishedAt | humanFriendlyDate">
-      {{ post.publishedAt | diffForHumans }}
-    </div>
+ 
+    <AppDate :timestamp="post.publishedAt" :class="'post-date text-faded'" />
   </div>
 </template>
 
@@ -29,6 +25,8 @@ import sourceData from '@/data'
 import moment from 'moment'
 
 export default {
+  components: {
+  },
   props: {
     post: {
       required: true,
