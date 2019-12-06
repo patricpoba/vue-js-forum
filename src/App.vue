@@ -18,4 +18,7 @@ export default {
 
 <style>
 @import "assets/css/style.css";
+#app{
+  width: 80%;
+}
 </style>
