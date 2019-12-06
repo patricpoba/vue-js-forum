@@ -5,6 +5,7 @@ import PageThreadShow from '@/pages/PageThreadShow'
 import NotFound from '@/pages/NotFound'
 import Forum from '@/components/Forum'
 import ForumList from '@/components/ForumList'
+import Category from '@/pages/PageCategory'
 
 Vue.use(Router)
 
@@ -14,6 +15,12 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/category/:id',
+      name: 'Category',
+      component: Category,
+      props: true
     },
     {
       path: '/threads/:id',
