@@ -20,7 +20,6 @@
 
 
 <script>
-import sourceData from '@/data'
 
 export default {
 
@@ -33,7 +32,7 @@ export default {
   computed: {
     posts () {
       const postIds = Object.values(this.thread.posts)
-      return Object.values(sourceData.posts)
+      return Object.values(this.$store.state.posts)
         .filter(post => postIds.includes(post['.key']))
     }
   },

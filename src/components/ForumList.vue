@@ -15,7 +15,6 @@
 
 <script>
 import ForumListItem from '@/components/ForumListItem'
-import sourceData from '@/data'
 
 export default {
 
@@ -31,7 +30,7 @@ export default {
 
   data () {
     return {
-      forums: Object.values(sourceData.forums)
+      forums: Object.values(this.$store.state.forums)
     }
   },
 

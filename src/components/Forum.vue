@@ -20,7 +20,6 @@
 
 <script>
   import ThreadList from './ThreadList'
-  import sourceData from '@/data'
 
   export default {
     components: {
@@ -36,12 +35,12 @@
 
     computed: {
       forum () {
-        return sourceData.forums[this.id]
+        return this.$store.state.forums[this.id]
       },
 
       threads () {
-        // return sourceData.threads[this.forum['.key']]
-        return Object.values(sourceData.threads)
+        // return this.$store.state.threads[this.forum['.key']]
+        return Object.values(this.$store.state.threads)
           .filter(thread => thread.forumId === this.id)
       }
     },
