@@ -7,7 +7,6 @@
 
       <PostEditor 
         :threadId="id"
-        @save-post="addPost"
       />
     </div>
   </div>
@@ -49,17 +48,6 @@ export default {
   },
 
   methods: {
-    addPost (eventData) {
-      // console.log(eventData)
-
-      const post = eventData.post
-      const postId = eventData.post['.key']
-      // use "this.$set(object, propertyName, value)" to set value to make it react to the changes
-      this.$set(this.$store.state.posts, postId, post)
-      this.$set(this.thread.posts, postId, postId)
-      // increase user post count
-      this.$set(this.$store.state.users[post.userId].posts, postId, postId)
-    }
   }
 }
 </script>
