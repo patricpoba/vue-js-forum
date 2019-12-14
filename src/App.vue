@@ -1,24 +1,32 @@
 <template>
-  <div class="container">
 
     <div id="app">
+      <TheNavBar />
 
-      <router-view/>
+      <div class="container">
+        
+        <router-view/>
 
+      </div>
     </div>
 
-  </div>
 </template>
 
 <script>
+import TheNavBar from '@/components/TheNavBar'
+
 export default {
-  name: 'app'
+  name: 'app',
+
+  components: {
+    TheNavBar
+  }
 }
 </script>
 
 <style>
 @import "assets/css/style.css";
-#app{
+/* #app{
   width: 80%;
-}
+} */
 </style>
