@@ -20,13 +20,14 @@
     <nav class="navbar">
       <ul>
         <li class="navbar-user">
-          <a href="#">
-            <img class="avatar-small" src="https://pbs.twimg.com/profile_images/881260299420041217/GMVGlDea_400x400.jpg" alt="">
+          
+          <router-link :to="{name: 'Profile'}">
+            <img class="avatar-small" :src="user.avatar"  alt="">
             <span>
-              Alex Kyriakidis
-              <img class="icon-profile" src="/assets/img/svg/arrow-profile.svg" alt="">
+              {{ user.name }}
+              <img class="icon-profile" src="../assets/img/svg/arrow-profile.svg" alt="">
             </span>
-          </a>
+          </router-link>
 
           <!-- dropdown menu -->
           <!-- add class "active-drop" to show the dropdown -->
@@ -70,23 +71,16 @@
 </template>
 
 <script>
- export default {
-   name: 'ComponentName',
+  import {mapGetters} from 'vuex'
 
-   props: {},
+  export default {
 
-   components: {},
-
-   computed: {},
-
-   data () {
-     return {}
-   },
-
-   methods: {},
-
-   filters: {}
- }
+    computed: {
+      ...mapGetters({
+        'user': 'authUser'
+      })
+    }
+  }
 </script>
 
 <style scoped>

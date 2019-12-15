@@ -6,6 +6,7 @@ import NotFound from '@/pages/NotFound'
 import Forum from '@/components/Forum'
 import ForumList from '@/components/ForumList'
 import Category from '@/pages/PageCategory'
+import Profile from '@/pages/PageProfile'
 
 Vue.use(Router)
 
@@ -37,6 +38,12 @@ export default new Router({
       path: '/forum/:id',
       name: 'Forum',
       component: Forum,
+      props: true
+    },
+    {
+      path: '/me',
+      name: 'Profile',
+      component: Profile,
       props: true
     },
     {
