@@ -22,6 +22,7 @@
 
 <script>
 import moment from 'moment'
+import {countObjectProperties} from '@/utils'
 
 export default {
   components: {
@@ -37,7 +38,7 @@ export default {
       return this.$store.state.users[this.post.userId]
     },
     userPostCount () {
-      return Object.keys(this.user.posts).length
+      return countObjectProperties(this.user.posts)
     }
   },
   filters: {

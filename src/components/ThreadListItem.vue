@@ -31,28 +31,29 @@
 </template>
 
 <script>
+  import {countObjectProperties} from '@/utils'
 
-export default {
-  name: 'ThreadListItem',
+  export default {
+    name: 'ThreadListItem',
 
-  components: {
-  },
-
-  props: {
-    thread: {
-      required: true,
-      type: Object
-    }
-  },
-
-  computed: {
-    repliesCount () {
-      return Object.keys(this.thread.posts).length - 1
+    components: {
     },
 
-    user () {
-      return this.$store.state.users[this.thread.userId]
+    props: {
+      thread: {
+        required: true,
+        type: Object
+      }
+    },
+
+    computed: {
+      repliesCount () {
+        return countObjectProperties(this.thread.posts)
+      },
+
+      user () {
+        return this.$store.state.users[this.thread.userId]
+      }
     }
   }
-}
 </script>
