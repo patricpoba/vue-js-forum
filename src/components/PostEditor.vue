@@ -48,9 +48,8 @@ export default {
       // const postId = 'greatPost' + Math.random()
       const post = {
         text: this.text,
-        publishedAt: Math.floor(Date.now() / 1000),
-        threadId: this.threadId,
-        userId: 'FsCDAk9w8NeXEceLV87arpsXjnQ2'
+        threadId: this.threadId
+        // ,userId: 'FsCDAk9w8NeXEceLV87arpsXjnQ2'
         // ,'.key': postId
       }
       this.text = ''
